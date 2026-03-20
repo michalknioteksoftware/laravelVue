@@ -1,0 +1,10 @@
+/* CSS classes used to avoid inline SVG `style="mix-blend-mode: ..."` attributes. */
+
+.mix-blend-hard-light {
+    mix-blend-mode: hard-light;
+}
+
+.mix-blend-plus-darker {
+    mix-blend-mode: plus-darker;
+}
+

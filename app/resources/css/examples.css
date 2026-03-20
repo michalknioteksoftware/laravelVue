@@ -1,0 +1,49 @@
+/* Styling for /examples and its sub-pages (partial inline styles removed). */
+
+.examples-page {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    padding: 24px;
+    color: #1b1b18;
+}
+
+.examples-page a {
+    color: inherit;
+}
+
+.examples-post-item {
+    margin-bottom: 18px;
+}
+
+.examples-post-title {
+    margin: 0 0 4px;
+}
+
+.examples-post-meta {
+    color: #444;
+}
+
+.examples-post-body {
+    margin-top: 8px;
+}
+
+.examples-post-actions {
+    margin-top: 6px;
+}
+
+.dark .examples-page {
+    background: #161615;
+    color: #edecec;
+}
+
+.dark .examples-post-meta {
+    color: #bdbdbd;
+}
+
+.examples-form-row {
+    margin-bottom: 10px;
+}
+
+.examples-inline-form {
+    display: inline;
+}
+

@@ -1,0 +1,36 @@
+/* Simple navbar styling used by `resources/views/partials/navbar.blade.php`. */
+
+.app-navbar {
+    margin: 0 0 16px 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: #1b1b18;
+}
+
+.app-navbar a {
+    text-decoration: none;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #1b1b18; /* readable on dark backgrounds */
+    background: #ffffff;
+    line-height: 1.2;
+}
+
+.app-navbar a:hover {
+    border-color: #666;
+    background: #f2f2f2;
+}
+
+/* If Tailwind `dark` mode is enabled (class="dark"), adjust for readability. */
+.dark .app-navbar a {
+    background: #161615;
+    color: #edecec;
+    border-color: #3e3e3a;
+}
+
+.dark .app-navbar a:hover {
+    background: #0f0f0f;
+}
+
