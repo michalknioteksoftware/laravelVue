@@ -4,35 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Posts</title>
-</head>
-<body class="examples-page">
-@include('partials.navbar')
-<h1>Posts</h1>
 
-<p><a href="/examples">Back to examples</a></p>
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css'])
+    @endif
+</head>
+<body>
+@include('partials.navbar')
+
+<div class="container py-4">
+<h1 class="h3 mb-2">Posts</h1>
+
+<p class="mb-3"><a class="btn btn-outline-secondary btn-sm" href="/examples">Back to examples</a></p>
 
 @if (!empty($singlePost ?? null))
-    <h2>Single post</h2>
+    <h2 class="h5 mb-3">Single post</h2>
 @endif
 
 @if ($posts->isEmpty())
-    <p>No posts yet. Create one on <a href="/examples">/examples</a>.</p>
+    <div class="alert alert-info" role="alert">No posts yet. Create one on <a href="/examples">/examples</a>.</div>
 @else
-    <ul>
+    <ul class="list-group">
         @foreach ($posts as $post)
-            <li class="examples-post-item">
-                <h3 class="examples-post-title">{{ $post->title }}</h3>
-                <div class="examples-post-meta">by user_id={{ $post->user_id }}</div>
-                <p class="examples-post-body">{{ $post->body }}</p>
-                <p class="examples-post-actions">
-                    <a href="/examples/posts/{{ $post->id }}">view</a> |
-                    <a href="/examples/authorize/posts/{{ $post->id }}">authorize update (owner)</a>
-                </p>
+            <li class="list-group-item">
+                <h3 class="h5 mb-1">{{ $post->title }}</h3>
+                <div class="text-body-secondary small mb-1">by user_id={{ $post->user_id }}</div>
+                <p class="mb-2">{{ $post->body }}</p>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a class="btn btn-sm btn-outline-primary" href="/examples/posts/{{ $post->id }}">view</a>
+                    <a class="btn btn-sm btn-outline-success" href="/examples/authorize/posts/{{ $post->id }}">authorize update (owner)</a>
+                </div>
             </li>
         @endforeach
     </ul>
 @endif
 
+</div>
 </body>
 </html>
 

@@ -4,69 +4,75 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel Examples</title>
-</head>
-<body class="examples-page">
-@include('partials.navbar')
-<h1>Laravel usage examples</h1>
-<p>These endpoints demonstrate routing, controllers, validation, Eloquent, caching, filesystem, logging, middleware, events, jobs, and notifications.</p>
 
-<h2>Pages</h2>
-<ul>
-    <li><a href="/examples/posts">/examples/posts</a> (Eloquent + Blade)</li>
-    <li><a href="/examples/blade-demo">/examples/blade-demo</a> (Blade variables + loops)</li>
-    <li><a href="/examples/cache">/examples/cache</a> (Cache facade)</li>
-    <li><a href="/examples/storage">/examples/storage</a> (Storage facade)</li>
-    <li><a href="/examples/logging">/examples/logging</a> (Log facade)</li>
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css'])
+    @endif
+</head>
+<body>
+@include('partials.navbar')
+<div class="container py-4">
+<h1 class="h3 mb-2">Laravel usage examples</h1>
+<p class="text-body-secondary mb-4">These endpoints demonstrate routing, controllers, validation, Eloquent, caching, filesystem, logging, middleware, events, jobs, and notifications.</p>
+
+<h2 class="h5 mb-3">Pages</h2>
+<ul class="list-group mb-4">
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/posts">/examples/posts</a> (Eloquent + Blade)</li>
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/blade-demo">/examples/blade-demo</a> (Blade variables + loops)</li>
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/cache">/examples/cache</a> (Cache facade)</li>
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/storage">/examples/storage</a> (Storage facade)</li>
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/logging">/examples/logging</a> (Log facade)</li>
 </ul>
 
-<h2>Actions</h2>
-<h3>Create Post</h3>
+<h2 class="h5 mt-4 mb-3">Actions</h2>
+<h3 class="h5 mb-3">Create Post</h3>
 <form method="POST" action="/examples/posts">
     @csrf
-    <div class="examples-form-row">
-        <label>User ID (optional): <input name="user_id" type="number" /></label>
+    <div class="mb-3">
+        <label>User ID (optional): <input class="form-control" name="user_id" type="number" /></label>
     </div>
-    <div class="examples-form-row">
-        <label>Title: <input name="title" type="text" required maxlength="255" /></label>
+    <div class="mb-3">
+        <label>Title: <input class="form-control" name="title" type="text" required maxlength="255" /></label>
     </div>
-    <div class="examples-form-row">
-        <label>Body: <textarea name="body" required></textarea></label>
+    <div class="mb-3">
+        <label>Body: <textarea class="form-control" name="body" required rows="4"></textarea></label>
     </div>
-    <button type="submit">Create Post</button>
+    <button class="btn btn-primary" type="submit">Create Post</button>
 </form>
 
-<h3>Validation example</h3>
+<h3 class="h5 mb-3">Validation example</h3>
 <form method="POST" action="/examples/validate">
     @csrf
-    <div class="examples-form-row">
-        <label>Name: <input name="name" type="text" required maxlength="50" /></label>
+    <div class="mb-3">
+        <label>Name: <input class="form-control" name="name" type="text" required maxlength="50" /></label>
     </div>
-    <div class="examples-form-row">
-        <label>Age: <input name="age" type="number" required /></label>
+    <div class="mb-3">
+        <label>Age: <input class="form-control" name="age" type="number" required /></label>
     </div>
-    <button type="submit">Validate</button>
+    <button class="btn btn-success" type="submit">Validate</button>
 </form>
 
-<h3>Authorization example</h3>
-<p>Go to <a href="/examples/posts">/examples/posts</a>, create a post, then click <em>authorize update (owner)</em> next to it.</p>
+<h3 class="h5 mb-3">Authorization example</h3>
+<p class="mb-0">Go to <a href="/examples/posts">/examples/posts</a>, create a post, then click <em>authorize update (owner)</em> next to it.</p>
 
-<h3>Middleware example</h3>
-<p>Works only with <code>?allow=1</code>.</p>
-<a href="/examples/middleware?allow=1">/examples/middleware?allow=1</a>
+<h3 class="h5 mb-3">Middleware example</h3>
+<p class="text-body-secondary mb-2">Works only with <code>?allow=1</code>.</p>
+<a class="btn btn-outline-primary btn-sm" href="/examples/middleware?allow=1">/examples/middleware?allow=1</a>
 
-<h3>Events + Jobs + Notifications</h3>
-<ul>
-    <li><a href="/examples/events">/examples/events</a> (event listener stores cache value)</li>
-    <li><a href="/examples/jobs">/examples/jobs</a> (dispatchSync job stores cache value)</li>
-    <li>
-        <form method="POST" action="/examples/notifications" class="examples-inline-form">
+<h3 class="h5 mb-3">Events + Jobs + Notifications</h3>
+<ul class="list-group">
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/events">/examples/events</a> (event listener stores cache value)</li>
+    <li class="list-group-item"><a class="list-group-item-action" href="/examples/jobs">/examples/jobs</a> (dispatchSync job stores cache value)</li>
+    <li class="list-group-item">
+        <form method="POST" action="/examples/notifications" class="d-flex flex-wrap gap-2 align-items-end">
             @csrf
-            <input name="user_id" type="number" placeholder="user_id (optional)" />
-            <input name="message" type="text" placeholder="message" required maxlength="255" />
-            <button type="submit">Send notification</button>
+            <input class="form-control w-auto" name="user_id" type="number" placeholder="user_id (optional)" />
+            <input class="form-control flex-grow-1" name="message" type="text" placeholder="message" required maxlength="255" />
+            <button class="btn btn-success" type="submit">Send notification</button>
         </form>
     </li>
 </ul>
+</div>
 </body>
 </html>
 
