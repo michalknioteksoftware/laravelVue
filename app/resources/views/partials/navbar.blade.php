@@ -8,6 +8,7 @@
             <a class="nav-link" href="/examples/blade-demo">Blade demo</a>
             <a class="nav-link" href="/examples/cache">Cache</a>
             <a class="nav-link" href="/examples/logging">Logging</a>
+            <a class="nav-link" href="/vue-examples">Vue examples</a>
         </div>
     </div>
 </nav>

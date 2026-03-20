@@ -25,7 +25,8 @@ On the first run, it will:
 
 You should be able to open:
 - `http://localhost:8080` (Laravel default home page)
-- `http://localhost:8080/login` and `/register` (Breeze auth)
+- `http://localhost:8080/examples` (Laravel examples)
+- `http://localhost:8080/vue-examples` (Vue.js examples)
 
 ## If you need to rebuild (Docker changes)
 If you change `Dockerfile`/images or the compose setup itself, run:

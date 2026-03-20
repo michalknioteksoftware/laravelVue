@@ -9,6 +9,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Vue playground (plain Vue components mounted via Vite)
+Route::get('/vue-examples', function () {
+    return view('vue-examples');
+});
+
 Route::get('/examples', [ExamplesController::class, 'index']);
 
 // Routing + route-model binding + Eloquent
