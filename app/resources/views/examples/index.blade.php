@@ -43,12 +43,45 @@
 <h3 class="h5 mb-3">Validation example</h3>
 <form method="POST" action="/examples/validate">
     @csrf
+
+    @if (session('validate_success'))
+        <div class="alert alert-success mb-3" role="alert">
+            Validation OK for <strong>{{ session('validate_success.name') }}</strong>
+            (age: {{ session('validate_success.age') }}).
+        </div>
+    @endif
+
     <div class="mb-3">
-        <label>Name: <input class="form-control" name="name" type="text" required maxlength="50" /></label>
+        <label for="name" class="form-label">Name</label>
+        <input
+            id="name"
+            name="name"
+            type="text"
+            class="form-control @error('name') is-invalid @enderror"
+            required
+            maxlength="50"
+            value="{{ old('name') }}"
+        />
+        @error('name')
+            <div class="invalid-feedback d-block">{{ $message }}</div>
+        @enderror
     </div>
+
     <div class="mb-3">
-        <label>Age: <input class="form-control" name="age" type="number" required /></label>
+        <label for="age" class="form-label">Age</label>
+        <input
+            id="age"
+            name="age"
+            type="number"
+            class="form-control @error('age') is-invalid @enderror"
+            required
+            value="{{ old('age') }}"
+        />
+        @error('age')
+            <div class="invalid-feedback d-block">{{ $message }}</div>
+        @enderror
     </div>
+
     <button class="btn btn-success" type="submit">Validate</button>
 </form>
 

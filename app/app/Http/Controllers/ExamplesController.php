@@ -68,10 +68,12 @@ class ExamplesController extends Controller
             'age' => ['required', 'integer', 'min:1', 'max:120'],
         ]);
 
-        return response()->json([
-            'validated' => true,
-            'data' => $data,
-        ]);
+        return redirect()
+            ->back()
+            ->with('validate_success', [
+                'name' => $data['name'],
+                'age' => $data['age'],
+            ]);
     }
 
     public function bladeDemo(): Response
