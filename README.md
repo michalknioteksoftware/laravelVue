@@ -42,6 +42,18 @@ docker compose up -d --build
 Open:
 - `http://localhost:8080`
 
+## Running PHPUnit tests
+This project includes PHPUnit tests under `app/tests/`.
+
+Run PHPUnit inside the existing Docker `php` container (no local PHP install needed):
+```powershell
+docker compose run --rm php sh -lc "cd /var/www/html && ./vendor/bin/phpunit"
+```
+
+Notes:
+- `app/phpunit.xml` config uses `DB_CONNECTION=sqlite` with an in-memory database for fast tests.
+- If you see an error about missing SQLite drivers (e.g. `pdo_sqlite`), you will need to enable the SQLite PHP extension in `Dockerfile` and rebuild the images.
+
 ## Notes / gotchas
 - This setup mounts `./app` into the containers. After scaffolding, the runtime app lives in `./app/`.
 - Database connection values are provided via container environment variables (`DB_HOST=mysql`, etc.), so you generally do not need to manually edit `./app/.env` for DB access.
