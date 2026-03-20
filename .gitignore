@@ -1,0 +1,17 @@
+# Laravel
+/app/vendor/
+/app/bootstrap/cache/
+/app/storage/*.key
+/app/storage/logs/
+/app/public/build/
+/app/.env
+
+# Node/Vite
+/app/node_modules/
+/app/package-lock.json
+/app/npm-debug.log*
+/app/yarn-error.log*
+
+# Cursor / editor
+.cursor/
+
